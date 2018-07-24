@@ -10,6 +10,7 @@ public class DriverFactory {
     public static WebDriver GetDriver()
     {
         if (driver == null)
+        	
             driver = new ChromeDriver();          
 
         return driver;
