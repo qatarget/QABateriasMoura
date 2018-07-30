@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import com.sun.org.apache.bcel.internal.generic.Select;
 import qa.target.bateriasmoura.core.DSL;
-import java.awt.event.FocusAdapter;
+
 import org.junit.Assert;
 import org.junit.Before;
 
@@ -23,9 +23,9 @@ public class PaginaCadastroRevendedor {
 	
 	@Before
 	public void inicializa() throws InterruptedException{
-		System.setProperty("webdriver.gecko.driver", "/home/target/driver"); - utilizar no linux
-		//driver = new FirefoxDriver();
-		//driver = new FirefoxDriver();
+		
+		driver = new FirefoxDriver();
+		driver = new FirefoxDriver();
 		driver.get("http://server.target1.com.br:9020/#/portal/home");
 		Thread.sleep(500);
 		dsl = new DSL(driver);
