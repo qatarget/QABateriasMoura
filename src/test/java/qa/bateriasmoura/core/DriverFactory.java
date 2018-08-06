@@ -15,10 +15,10 @@ public class DriverFactory {
 	@Before
 	public static WebDriver getDriver() {
 		if (driver == null) {
-			System.setProperty("webdriver.chrome.driver", "/home/target/driver/chromedriver"); //Usar no Linux
-			//System.setProperty("webdriver.gecko.driver","/home/target/driver/geckodriver"); //Usar no Linux
+			System.setProperty("webdriver.chrome.driver", "/home/target/driver/chromedriver"); // Usar no Linux
+			// System.setProperty("webdriver.gecko.driver","/home/target/driver/geckodriver");//Usar no Linux
 			driver = new ChromeDriver();
-			//driver = new FirefoxDriver();
+			// driver = new FirefoxDriver();
 		}
 
 		return driver;
