@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import qa.bateriasmoura.core.DSL;
 import qa.bateriasmoura.core.DriverFactory;
 
-public class cadastrarRevendedor {
+public class cadastrarRevendedorPage {
 	
 	private DSL dsl = new DSL();
 	

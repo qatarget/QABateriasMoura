@@ -2,12 +2,12 @@ package qa.bateriasmoura.revendabalcao.baseteste;
 
 import org.junit.Test;
 
-import qa.bateriasmoura.revendabalcao.basepage.cadastrarRevendedor;
+import qa.bateriasmoura.revendabalcao.basepage.cadastrarRevendedorPage;
 
 
 public class testeCadaastroRevenda {
 
-	private cadastrarRevendedor page = new cadastrarRevendedor();
+	private cadastrarRevendedorPage page = new cadastrarRevendedorPage();
 
 	@Test
 	public void CadastrarRevenda() throws InterruptedException {
