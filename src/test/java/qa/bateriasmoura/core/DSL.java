@@ -272,5 +272,10 @@ public class DSL {
 	public void RolarPagina(String rolagem) {
 		((JavascriptExecutor) DriverFactory.getDriver()).executeScript("scroll(0,400)");
 	}
+	
+	public String obterTexto(By by)
+    {
+        return DriverFactory.getDriver().findElement(by).getText();
+    }
 
 }
