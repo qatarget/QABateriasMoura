@@ -44,9 +44,9 @@ public class cadastrarRevendedorPage {
 		dsl.clicarBotaoBy(By.className("swal2-confirm"));
 	}
 	
-	public void SetEscreveCNPJ(String cnpj) 
+	public void SetEscreveCNPJ() 
 	{
-		dsl.escreveId("cnpj", cnpj);
+		dsl.escreveId("cnpj", dsl.gerarcnpj(false));
 	}
 	
 	public void SetNomeFantasia() 

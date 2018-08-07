@@ -1,35 +1,51 @@
 package qa.bateriasmoura.core;
 
-import org.junit.After;
-import org.junit.Before;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
 
-	private static WebDriver driver;
+//	private static WebDriver driver;
+	private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<WebDriver>() {
+		@Override
+		protected synchronized WebDriver initialValue() {
+			return initDriver();
+		}
+	};
 
 	private DriverFactory() {
 	}
 
-	@Before
 	public static WebDriver getDriver() {
-		if (driver == null) {
-			System.setProperty("webdriver.chrome.driver", "/home/target/driver/chromedriver"); // Usar no Linux
-			// System.setProperty("webdriver.gecko.driver","/home/target/driver/geckodriver");//Usar no Linux
-			driver = new ChromeDriver();
-			// driver = new FirefoxDriver();
-		}
+		return threadDriver.get();
+	}
 
+	public static WebDriver initDriver() {
+		WebDriver driver = null;
+		switch (Propriedades.browser) {
+		case FIREFOX:			
+			System.setProperty("webdriver.gecko.driver","/home/target/driver/geckodriver"); //Usar no Linux
+			driver = new FirefoxDriver();
+			break;
+		case CHROME:
+			System.setProperty("webdriver.chrome.driver", "/home/target/driver/chromedriver"); //Usar no Linux
+			driver = new ChromeDriver();
+			break;
+		}
+		driver.manage().window().setSize(new Dimension(1200, 765));
 		return driver;
 	}
 
-	@After
 	public static void killDriver() {
+		WebDriver driver = getDriver();
 		if (driver != null) {
 			driver.quit();
 			driver = null;
-
+		}
+		if (threadDriver != null) {
+			threadDriver.remove();
 		}
 	}
 }

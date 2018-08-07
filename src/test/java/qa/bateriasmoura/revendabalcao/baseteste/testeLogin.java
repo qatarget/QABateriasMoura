@@ -13,10 +13,11 @@ public class testeLogin {
 		
 		page.url("http://server.target1.com.br:9020/#/portal/home");
 		page.AguardaCarregarPagina(1000);
-		page.SetEscreveUsuario("03684666394");
-		page.SetEscreveSenha("666394");
+		page.SetEscreveUsuario("34213205860");
+		page.SetEscreveSenha("123456");
 		page.SetClicaBotaoEnviar();
-		
+		page.AguardaCarregarPagina(1000);
+		page.SetvalidarAcesso("Olá");
 	}
 
 }

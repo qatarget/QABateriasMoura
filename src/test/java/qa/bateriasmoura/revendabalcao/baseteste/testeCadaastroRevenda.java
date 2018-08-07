@@ -21,7 +21,7 @@ public class testeCadaastroRevenda {
 		page.SetMensagemAlerta("Digite um CNPJ válido para continuar");
 		page.AguardarCarregarPagina(1000);
 		page.SetClicarBotaoConfirma();
-		
+		page.SetEscreveCNPJ();
 
 	}
 
