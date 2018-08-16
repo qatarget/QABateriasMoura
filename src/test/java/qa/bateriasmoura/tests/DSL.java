@@ -1,4 +1,4 @@
-package qa.target.bateriasmoura.core;
+package qa.bateriasmoura.tests;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
