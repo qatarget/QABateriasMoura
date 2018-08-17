@@ -4,7 +4,7 @@ import static qa.bateriasmoura.core.DriverFactory.getDriver;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.io.FileUtils;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
