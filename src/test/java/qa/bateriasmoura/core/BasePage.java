@@ -16,8 +16,6 @@ import static qa.bateriasmoura.core.DriverFactory.getDriver;
 
 public class BasePage {
 
-	private WebDriver driver;
-
 	private int randomiza(int n) {
 		int ranNum = (int) (Math.random() * n);
 		return ranNum;
@@ -27,8 +25,14 @@ public class BasePage {
 		return (int) Math.round(dividendo - (Math.floor(dividendo / divisor) * divisor));
 	}
 
-	/********* CNPJ, CPF, Pessoa, Empresa e E-mail ************/
+	/******** CNPJ, CPF, Pessoa, Empresa e E-mail ***********/
 
+	/**
+	 * Gera CPF Aleatório com pontos ou sem pontos.
+	 * 
+	 * @param comPontos
+	 * @return
+	 */
 	public String geracpf(boolean comPontos) {
 		int n = 9;
 		int n1 = randomiza(n);
@@ -47,7 +51,7 @@ public class BasePage {
 		if (d1 >= 10)
 			d1 = 0;
 
-		int d2 = d1 * 2 + n9 * 3 + n8 * 4 + n7 * 5 + n6 * 6 + n5 * 7 + n4 * 8 + n3 * 9 + n2 * 10 + n1 * 11;
+		int d2 = d1 * 2 + n9 * 3 + n8 * 4 + n7 * 5 + n6 * 6 + n5 * 7 + n4 * 8 + n3 * 9 + n2 * 10 + n1 + 11;
 
 		d2 = 11 - (mod(d2, 11));
 
@@ -65,6 +69,12 @@ public class BasePage {
 		return retorno;
 	}
 
+	/***
+	 * Gera CNPJ com pontos ou sem Pontos.
+	 * 
+	 * @param comPontos
+	 * @return
+	 */
 	public String gerarcnpj(boolean comPontos) {
 		int n = 9;
 		int n1 = randomiza(n);
@@ -106,319 +116,252 @@ public class BasePage {
 		return retorno;
 	}
 
+	/***
+	 * Gera Nomes e Sobrenomes aleatoriamente.
+	 * 
+	 * @return
+	 */
 	public String geraNomeAleatorio() {
 		String[] nomes = { "Antonio", "Rafael", "Bruno", "Marcelo", "Alberto", "Pedro", "Anderson", "Airton", "Sidney",
-				"Wilson", "Carlos", "Cï¿½ndido", "Hugo", "Joï¿½o", "Mauro", "Leonardo", "Natanael", "Reinaldo",
-				"Orlando", "Tiago", "Gildo", "Alfredo", "Maurï¿½cio", "Jurandir", "Paulo", "Juvï¿½ncio", "Daniel",
-				"Jair", "Juvenal", "Jorge" };
+				"Wilson", "Carlos", "Cândido", "Hugo", "João", "Mauro", "Leonardo", "Natanael", "Reinaldo", "Orlando",
+				"Tiago", "Gildo", "Alfredo", "Maurício", "Jurandir", "Paulo", "Juvêncio", "Daniel", "Jair", "Juvenal",
+				"Jorge", "Agiliza", "Alessandro", "Alexandre", "Aline", "Ana Paula", "Andressa", "Antonia", "Camila",
+				"Carolina", "Cileia", "Debora", "Edna", "Ellen", "Eveline", "Fabio", "Fernanda", "Gesiele", "Hellen",
+				"Isabela", "Joice", "Joseense" };
 		String[] sobrenomes = { "Afonso", "Balera", "Seco", "Vieira", "Mendes", "Miyahira", "Garcia", "Cunha", "Santos",
-				"Flï¿½vio" };
-		String[] ultimoNome = { "Magalhï¿½es", "Alves", "Silva", "Pereira", "Mathias", "Camargo", "Moraes", "Rodrigues",
+				"Flávio" };
+		String[] ultimoNome = { "Magalhães", "Alves", "Silva", "Pereira", "Mathias", "Camargo", "Moraes", "Rodrigues",
 				"Fonseca", "Azevedo" };
-
+		String[] tag = { "TARGET QA" };
 		StringBuilder nomeAleatorio = new StringBuilder();
-
-		nomeAleatorio.append(nomes[new Random().nextInt(29)]).append(" ").append(sobrenomes[new Random().nextInt(9)])
-				.append(" de ").append(ultimoNome[new Random().nextInt(9)]).append(" ").append(this.hashCode());
-
+		nomeAleatorio.append(nomes[new Random().nextInt(50)]).append(" ").append(sobrenomes[new Random().nextInt(9)])
+				.append(" de ").append(ultimoNome[new Random().nextInt(9)]).append("")
+				.append(tag[new Random().nextInt(1)]).append("");
 		return nomeAleatorio.toString();
 	}
 
+	/***
+	 * Gera nome de empresas aleatoriamente
+	 * 
+	 * @return
+	 */
 	public String geraEmpresaAleatorio() {
-		String[] nomes = { "atendimento", "contato", "orcamento", "despesa", "RH", "dp", "recursos.humanos", "deposito",
-				"gerente", "gestor", "diretoria", "almoxarifado", "balconista" };
-		String[] sobrenomes = { "Auto", "Lar", "Seco", "Vieira", "Mendes", "Miyahira", "Garcia", "Cunha", "Santos",
-				"Flï¿½vio" };
-		String[] ultimoNome = { "LTDA", "ME", "EIRELI", "S/A", "EPP" };
-
+		String[] empresa = { "Colégio Adventista de Sorocaba", "Colégio Vincere", "Colégio Politécnico de Sorocaba",
+				"Objetivo Sorocaba - unidade Centro", "Colégio Talentos International", "Colégio Salesiano São José",
+				"Colégio Dom Aguirre", "Colégio Primeiro Mundo", "Colégio Humanus", "Colégio Ser",
+				"Colégio Tableau - Sorocaba", "Colégio Sorocaba", "Colégio Veritas", "Colégio Renascer",
+				"Colégio Múltiplo Sorocaba", "Colégio Ivo de Almeida", "Colégio Uirapuru", "COC Sorocaba",
+				"Colégio O Farol" };
+		String[] sociedade = { "LTDA", "ME", "EIRELI", "S/A", "EPP" };
+		String[] tag = { "TARGET QA" };
 		StringBuilder empresaAleatorio = new StringBuilder();
-
-		empresaAleatorio.append(nomes[new Random().nextInt(13)]).append(" ").append(sobrenomes[new Random().nextInt(9)])
-				.append(" ").append(ultimoNome[new Random().nextInt(5)]).append(" ").append(this.hashCode());
-
+		empresaAleatorio.append(empresa[new Random().nextInt(18)]).append(" ")
+				.append(sociedade[new Random().nextInt(4)]).append(" ").append(tag[new Random().nextInt(1)]).append("");
 		return empresaAleatorio.toString();
 	}
 
-	public String geraEmailAleatorio() {
-		String[] nomes = { "A Rates", "Integrid", "Sun", "J & J", "Grill", "Grafic", "TOP GUN", "Balon Balon",
-				"Destiny", "The Angels", "Quantum", "Place", "Unconventional", "Metro", "Samurai", "Simpson",
-				"Natanael", "Wall", "Orlando", "Street", "Gildo", "Coca", "MicroL", "Jurask", "UMO", "ARDIDAS",
-				"WeDoLogos", "CaraLivro", "Juvenal", "DEMINU" };
+	/***
+	 * Gera e-mail aleatoriamente
+	 * 
+	 * @return
+	 */
+	public String GeraEmailAleatorio() {
+		String[] nomes = { "administracao", "adgomes", "afpres", "estagio", "ferramentaria", "alberflex", "figueiredo",
+				"bastos", "atendimento", "medeiros", "cerac", "cityrh", "comercial", "financeiro", "contabilidade",
+				"rh", "dp", "tecnologia", "consultoria", "contato", "curriculos", "cursos", "design", "cv",
+				"diretoriabrasilmarcas", "disk", "eadiaurora", "easyte", "emprego", "exportacao" };
 		String[] arroba = { "@" };
-		String[] ultimoNome = { "Auto", "Lar", "Seco", "Vieira", "Mendes", "Miyahira", "Garcia", "Cunha", "Santos",
-				"Flï¿½vio", "LTDA", "ME", "EIRELI", "S/A", "EPP" };
+		String[] tag = { "targetqa" };
 		String[] complemento = { ".com.br" };
-
 		StringBuilder emailAleatorio = new StringBuilder();
-
 		emailAleatorio.append(nomes[new Random().nextInt(29)]).append(arroba[new Random().nextInt(1)])
-				.append(ultimoNome[new Random().nextInt(5)]).append(complemento[new Random().nextInt(1)]);
-
+				.append(tag[new Random().nextInt(1)]).append(complemento[new Random().nextInt(1)]);
 		return emailAleatorio.toString();
 	}
 
-	/********* TextField e TextArea ************/
-
-	public void escrever(By by, String texto) {
-		driver.findElement(by).clear();
-		driver.findElement(by).sendKeys(texto);
+	/***
+	 * Gera estado aleatoriamente.
+	 * 
+	 * @return
+	 */
+	public String geraEstadoAleatorio() {
+		String[] estados = { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal",
+				"Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Paraná",
+				"Paraíba", "Pará", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul",
+				"Rondônia", "Roraima", "Santa Catarina", "Sergipe", "São Paulo", "Tocantins" };
+		String[] tag = { "TARGET QA" };
+		StringBuilder estadosAleatorio = new StringBuilder();
+		estadosAleatorio.append(estados[new Random().nextInt(26)]).append(" ").append(tag[new Random().nextInt(1)])
+				.append("");
+		return estadosAleatorio.toString();
 	}
 
-	public void escreverNaClasse(String nome_classe, String texto) {
-		escrever(By.className(nome_classe), texto);
+	/**
+	 * Gera municipio aleatoriamente.
+	 * 
+	 * @return
+	 */
+	public String GeraMunicipioAleatorio() {
+		String[] municipio = { "Abadia dos Dourados", "Abaeté", "Abre-Campo", "Acaiaca", "Açucena", "Água Boa",
+				"Água Comprida", "Aguanil", "Águas Formosas", "Águas Vermelhas", "Aimorés", "Aiuruoca", "Alagoa",
+				"Albertina", "Além Paraíba", "Alfenas", "Alfredo Vasconcelos", "Almenara", "Alpercata" };
+		String[] tag = { "TARGET QA" };
+		StringBuilder estadosAleatorio = new StringBuilder();
+		estadosAleatorio.append(municipio[new Random().nextInt(26)]).append(" ").append(tag[new Random().nextInt(1)])
+				.append("");
+		return estadosAleatorio.toString();
 	}
 
-	public void escreverId(String id_campo, String texto) {
-		escrever(By.id(id_campo), texto);
+	/***
+	 * Gera região aleatoriamente.
+	 * 
+	 * @return
+	 */
+	public String GeraRegiaoAleatorio() {
+		String[] regiao = { "Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul" };
+		String[] tag = { "TARGET QA" };
+		StringBuilder regiaoAleatorio = new StringBuilder();
+		regiaoAleatorio.append(regiao[new Random().nextInt(5)]).append(" ").append(tag[new Random().nextInt(1)])
+				.append("");
+		return regiaoAleatorio.toString();
 	}
 
-	public String obterValorCampo(String id_campo) {
-		return driver.findElement(By.id(id_campo)).getAttribute("value");
+	/***
+	 * Gera departamento comercial aleatoriamente
+	 * 
+	 * @return
+	 */
+	public String GeraDepartamentoAleatorio() {
+		String[] departamento = { "Financeiro", "RH", "Comercial", "Tecnologia", "Administrativo", "Produção",
+				"Controladoria Auditoria", "Contas a Pagar", "Tesouraria", "Contas a Receber", "Orçamentos",
+				"Analise de Crédito", "Cobrança", "Relações com Mercadorias", "Manutenção", "Suprimentos", "PCP",
+				"Engenharia Desenvolvimento de Novos Produtos", "Logistica estocagem prod. acabado",
+				"Controle de Qualidade", "Planejamento / Controle", "Suporte a Clientes", "Marketing", "Contabilidade",
+				"Faturamento Livros Fiscais", "Controle Patrimonial", "Importação", "Relações Publicas", "Vendas",
+				"Exportação" };
+		String[] tag = { "TARGET QA" };
+		StringBuilder departamentoAleatorio = new StringBuilder();
+		departamentoAleatorio.append(departamento[new Random().nextInt(30)]).append(" ")
+				.append(tag[new Random().nextInt(1)]).append("");
+		return departamentoAleatorio.toString();
 	}
 
-	public String obterValorTexto(String id_campo) {
-
-		return driver.findElement(By.id(id_campo)).getText();
-
+	/***
+	 * Gera mesorregião aleatoriamente.
+	 * 
+	 * @return
+	 */
+	public String GeraMesorregiaoAleatorio() {
+		String[] mesorregiao = { "Agreste Alagoano", "Agreste Paraibano", "Agreste Pernambucano", "Agreste Potiguar",
+				"Agreste Sergipano", "Araraquara/Central Paulista", "Araçatuba", "Assis", "Baixadas Litorâneas",
+				"Baixo Amazonas", "Bauru", "Borborema", "Campinas", "Campo das Vertentes", "Central Espírito-Santense",
+				"Central Mineira", "Central Potiguar", "Centro Amazonense", "Centro de Goiás", "Centro Fluminense",
+				"Centro Maranhense", "Centro Ocidental Paranaense", "Centro Ocidental Rio-Grandense",
+				"Centro Oriental Paranaense", "Centro Oriental Rio-Grandense", "Centro-Norte Baiano",
+				"Centro-Norte de Mato Grosso do Sul", "Centro - Norte Piauiense", "Centro - Sul Baiano",
+				"Centro - Sul Cearense", "Centro - Sul Mato - Grossense", "Centro - Sul Paranaense", "Distrito Federal",
+				"Extremo Oeste Baiano", "Grande Florianópolis", "Itapetininga", "Jaguaribe", "Jequitinhonha",
+				"Leste Alagoano", "Leste de Goiás", "Leste de Mato Grosso do Sul", "Leste Maranhense", "Leste Potiguar",
+				"Leste Rondoniense", "Leste Sergipano", "Litoral Norte Espírito - Santense", "Litoral Sul Paulista",
+				"Macro Metropolitana Paulista", "Madeira - Guaporé", "Marajó", "Marília", "Mata Paraibana",
+				"Mata Pernambucana", "Metropolitana de Belo Horizonte", "Metropolitana de Belém",
+				"Metropolitana de Curitiba", "Metropolitana de Fortaleza", "Metropolitana de Porto Alegre",
+				"Metropolitana de Salvador", "Metropolitana de São Paulo", "Metropolitana do Recife",
+				"Metropolitana do Rio de Janeiro", "Nordeste Baiano", "Nordeste Mato-Grossense", "Nordeste Paraense",
+				"Nordeste Rio-Grandense", "Noroeste Cearense", "Noroeste de Goiás", "Noroeste de Minas",
+				"Noroeste Espírito-Santense", "Noroeste Fluminense", "Noroeste Paranaense", "Noroeste Rio-Grandense",
+				"Norte Amazonense", "Norte Catarinense", "Norte Cearense", "Norte Central Paranaense", "Norte de Goiás",
+				"Norte de Minas", "Norte de Roraima", "Norte do Amapá", "Norte Fluminense", "Norte Maranhense",
+				"Norte Mato-Grossense", "Norte Piauiense", "Norte Pioneiro Paranaense", "Ocidental do Tocantins",
+				"Oeste Catarinense", "Oeste de Minas", "Oeste Maranhense", "Oeste Paranaense", "Oeste Potiguar",
+				"Oriental do Tocantins", "Pantanais Sul - Mato - Grossenses", "Piracicaba", "Presidente Prudente",
+				"Ribeirão Preto", "Serrana", "Sertão Alagoano", "Sertão Paraibano", "Sertão Pernambucano",
+				"Sertão Sergipano", "Sertões Cearenses", "Sudeste Mato-Grossense", "Sudeste Paraense",
+				"Sudeste Paranaense", "Sudeste Piauiense", "Sudeste Rio-Grandense", "Sudoeste Amazonense",
+				"Sudoeste de Mato Grosso do Sul", "Sudoeste Mato - Grossense", "Sudoeste Paraense",
+				"Sudoeste Paranaense", "Sudoeste Piauiense", "Sudoeste Rio-Grandense", "Sul Amazonense", "Sul Baiano",
+				"Sul Catarinense", "Sul Cearense", "Sul de Roraima", "Sul do Amapá", "Sul e Sudoeste de Minas",
+				"Sul Espírito - Santense", "Sul Fluminense", "Sul Goiano", "Sul Maranhense",
+				"São Francisco Pernambucano", "São José do Rio Preto", "Triângulo Mineiro e Alto Paranaíba",
+				"Vale do Acre", "Vale do Itajaí", "Vale do Juruá", "Vale do Mucuri", "Vale do Paraíba Paulista",
+				"Vale do Rio Doce", "Vale São - Franciscano da Bahia", "Zona da Mata", "Matão" };
+		String[] tag = { "TARGET QA" };
+		StringBuilder mesorregiaoAleatorio = new StringBuilder();
+		mesorregiaoAleatorio.append(mesorregiao[new Random().nextInt(137)]).append(" ")
+				.append(tag[new Random().nextInt(1)]).append("");
+		return mesorregiaoAleatorio.toString();
 	}
 
-	public void checarCampoObrigatorio(String texto, String id_campo) {
-		Assert.assertEquals(texto, obterTexto(id_campo));
-	}
+	/***
+	 * Espera a página carregar conforme o tempo informado em milesegundos.
+	 * 
+	 * @param tempo
+	 * @throws InterruptedException
+	 */
+	public void esperaCarregar(int tempo) throws InterruptedException {
 
-	/********* Radio e Check ************/
-
-	public void clicarRadio(By by) {
-		driver.findElement(by).click();
-	}
-
-	public void clicarRadioId(String id) {
-		driver.findElement(By.id(id)).click();
-	}
-
-	public boolean isRadioMarcado(String id) {
-		return driver.findElement(By.id(id)).isSelected();
-	}
-
-	public void clicarCheckId(String id) {
-		driver.findElement(By.id(id)).click();
-	}
-
-	public boolean isCheckMarcado(String id) {
-		return driver.findElement(By.id(id)).isSelected();
-	}
-
-	public void isCheckMarcadoComEspaco(String id) {
-		driver.findElement(By.id(id)).sendKeys(Keys.SPACE);
-	}
-
-	/********* Combo ************/
-
-	public void selecionarComboAjax(String class_campo, String texto) {
-
-		WebElement combo = driver.findElement(By.className(class_campo));
-		combo.sendKeys(Keys.SPACE);
-		combo.findElement(By.tagName(texto)).submit();
-
-	}
-
-	public void selecionarCombo(String id, String valor) {
-		WebElement element = driver.findElement(By.id(id));
-		Select combo = new Select(element);
-		combo.selectByVisibleText(valor);
-	}
-
-	public void deselecionarCombo(String id, String valor) {
-		WebElement element = driver.findElement(By.id(id));
-		Select combo = new Select(element);
-		combo.deselectByVisibleText(valor);
-	}
-
-	public String obterValorCombo(String id) {
-		WebElement element = driver.findElement(By.id(id));
-		Select combo = new Select(element);
-		return combo.getFirstSelectedOption().getText();
-	}
-
-	public List<String> obterValoresCombo(String id) {
-		WebElement element = driver.findElement(By.id("elementosForm:esportes"));
-		Select combo = new Select(element);
-		List<WebElement> allSelectedOptions = combo.getAllSelectedOptions();
-		List<String> valores = new ArrayList<String>();
-		for (WebElement opcao : allSelectedOptions) {
-			valores.add(opcao.getText());
-		}
-		return valores;
-	}
-
-	public int obterQuantidadeOpcoesCombo(String id) {
-		WebElement element = driver.findElement(By.id(id));
-		Select combo = new Select(element);
-		List<WebElement> options = combo.getOptions();
-		return options.size();
-	}
-
-	public boolean verificarOpcaoCombo(String id, String opcao) {
-		WebElement element = driver.findElement(By.id(id));
-		Select combo = new Select(element);
-		List<WebElement> options = combo.getOptions();
-		for (WebElement option : options) {
-			if (option.getText().equals(opcao)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public void selecionarComboPrime(String radical, String valor) {
-		clicarRadio(By.xpath("//*[@id='" + radical + "_input']/../..//span"));
-		clicarRadio(By.xpath("//*[@id='" + radical + "_items']//li[.='" + valor + "']"));
-	}
-
-	public void selecionarComboPorVisibleText(String id_campo, String texto) {
-
-		new Select(driver.findElement(By.id(id_campo))).selectByVisibleText(texto);
+		Thread.sleep(tempo);
 
 	}
 
-	/********* Botao ************/
+	/***
+	 * Escreve no campo informado.
+	 * 
+	 * @param by
+	 * @param texto
+	 */
+	public void escreveTexto(By by, String texto) {
 
+		getDriver().findElement(by).sendKeys(texto);
+	}
+
+	/***
+	 * Escreve no campo informado por id.
+	 * 
+	 * @param id_campo
+	 * @param texto
+	 */
+	public void escreveId(String id_campo, String texto) {
+		escreveTexto(By.id(id_campo), texto);
+	}
+
+	/***
+	 * Clica no botão via comando By Ex By.xpath("campo").
+	 * 
+	 * @param by
+	 */
 	public void clicarBotaoBy(By by) {
-		driver.findElement(by).click();
+		getDriver().findElement(by).click();
 	}
 
-	public void clicarBotaoId(String id) {
-		clicarBotaoBy(By.id(id));
+	/***
+	 * maximizar Browser
+	 */
+	public void maximizaJanela() {
+
+		getDriver().manage().window().maximize();
 	}
 
-	public void clicarBotaoClass(String classe) {
-		driver.findElement(By.className(classe)).click();
+	/***
+	 * Executa rolagem da página. Exemplo: RolarPagina("scroll(0,650)");
+	 * 
+	 * @param rolagem
+	 */
+	public void RolarPagina(String rolagem) {
+		((JavascriptExecutor) getDriver()).executeScript("scroll(0,400)");
 	}
 
-	public String obterValueElemento(String id) {
-		return driver.findElement(By.id(id)).getAttribute("value");
+	/***
+	 * Gera títulos aleatorios.
+	 * 
+	 * @return
+	 */
+	public String GerarTituloAleatorio() {
+		String[] Titulo = { "CNA na Escola pública", "CNA Go", "Don't Bee Loro", " CNA Portal Corporativo" };
+
+		StringBuilder TituloAleatorio = new StringBuilder();
+		TituloAleatorio.append(Titulo[new Random().nextInt(4)]).append(" ");
+		return TituloAleatorio.toString();
 	}
 
-	public void clicarBotaoPorTexto(String texto) {
-		clicarBotaoBy(By.xpath("//button[.='" + texto + "']"));
-	}
-
-	/********* Link ************/
-
-	public void clicarLink(String link) {
-		driver.findElement(By.linkText(link)).click();
-	}
-
-	/********* Textos ************/
-
-	public String obterTexto(By by) {
-		return driver.findElement(by).getText();
-	}
-
-	public String obterTexto(String id) {
-		return obterTexto(By.id(id));
-	}
-
-	/********* Alerts ************/
-
-	public String alertaObterTexto() {
-		Alert alert = driver.switchTo().alert();
-		return alert.getText();
-	}
-
-	public String alertaObterTextoEAceita() {
-		Alert alert = driver.switchTo().alert();
-		String valor = alert.getText();
-		alert.accept();
-		return valor;
-
-	}
-
-	public String alertaObterTextoENega() {
-		Alert alert = driver.switchTo().alert();
-		String valor = alert.getText();
-		alert.dismiss();
-		return valor;
-
-	}
-
-	public void alertaEscrever(String valor) {
-		Alert alert = driver.switchTo().alert();
-		alert.sendKeys(valor);
-		alert.accept();
-	}
-
-	/********* Frames e Janelas ************/
-
-	public void entrarFrame(String id) {
-		driver.switchTo().frame(id);
-	}
-
-	public void sairFrame() {
-		driver.switchTo().defaultContent();
-	}
-
-	public void trocarJanela(String id) {
-		driver.switchTo().window(id);
-	}
-
-	/************** JS *********************/
-
-	public Object executarJS(String cmd, Object... param) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		return js.executeScript(cmd, param);
-	}
-
-	/************** Tabela *********************/
-
-	public WebElement obterCelula(String colunaBusca, String valor, String colunaBotao, String idTabela) {
-
-		// procurar coluna do registro
-		WebElement tabela = driver.findElement(By.xpath("//*[@id='" + idTabela + "']"));
-		int idColuna = obterIndiceColuna(colunaBusca, tabela);
-
-		// encontrar a linha do registro
-		int idLinha = obterIndiceLinha(valor, tabela, idColuna);
-
-		// procurar coluna do botao
-		int idColunaBotao = obterIndiceColuna(colunaBotao, tabela);
-
-		// clicar no botao da celula encontrada
-		WebElement celula = tabela.findElement(By.xpath(".//tr[" + idLinha + "]/td[" + idColunaBotao + "]"));
-		return celula;
-	}
-
-	public void clicarBotaoTabela(String colunaBusca, String valor, String colunaBotao, String idTabela) {
-		WebElement celula = obterCelula(colunaBusca, valor, colunaBotao, idTabela);
-		celula.findElement(By.xpath(".//input")).click();
-
-	}
-
-	protected int obterIndiceLinha(String valor, WebElement tabela, int idColuna) {
-		List<WebElement> linhas = tabela.findElements(By.xpath("./tbody/tr/td[" + idColuna + "]"));
-		int idLinha = -1;
-		for (int i = 0; i < linhas.size(); i++) {
-			if (linhas.get(i).getText().equals(valor)) {
-				idLinha = i + 1;
-				break;
-			}
-		}
-		return idLinha;
-	}
-
-	protected int obterIndiceColuna(String coluna, WebElement tabela) {
-		List<WebElement> colunas = tabela.findElements(By.xpath(".//th"));
-		int idColuna = -1;
-		for (int i = 0; i < colunas.size(); i++) {
-			if (colunas.get(i).getText().equals(coluna)) {
-				idColuna = i + 1;
-				break;
-			}
-		}
-		return idColuna;
-	}
-
-	public String ObterTextoCampoClassName(string className) {
-		return getDriver().FindElement(By.ClassName(className)).Text;
-	}
 }

@@ -1,16 +1,9 @@
 package qa.bateriasmoura.core;
 
-import static qa.bateriasmoura.core.DriverFactory.getDriver;
-import java.io.File;
-import java.io.IOException;
-
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestName;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+
 
 import qa.bateriasmoura.page.LoginPage;
 
